@@ -24,26 +24,25 @@ with open(path) as csvfile:
             total_votes += 1
             candidate = row[2]
 
-        # Adding votes to candidates
-        if candidate in candidates: 
-            candidate_1 = candidates.index(candidate)
-            votes[candidate_1] = votes[candidate_1] + 1
+            # Adding votes to candidates
+            if candidate in candidates: 
+                candidate_a = candidates.index(candidate)
+                votes[candidate_a] = votes[candidate_a] + 1
 
-        # If candidate doesn't exist, add it to candidate list
-        else: 
-            candidates.append(candidate)
-            votes.append(1) 
+            # If candidate doesn't exist, add it to candidate list
+            else: 
+                candidates.append(candidate)
+                votes.append(1) 
 
-    # Calculate vote % and determine winner
-    winner_votes = votes[0]
+        # Calculate vote % and determine winner
+        winner_votes = votes[0]
 
-    for i in range(len(candidates)):
-        percentage = round((votes[i]/total_votes)*100,2)
-        vote_percentage.append(percentage)
+        for i in range(len(candidates)):
+            percentage = round((votes[i]/total_votes)*100, 2)
+            vote_percentage.append(percentage)
 
-        if votes[i] > winner_votes:
-            winner_votes = votes[i]
-            winner = i
+            if votes[i] > winner_votes:
+                winner_votes = votes[i]
         elected = candidates[winner]
 
 # Printing Results
@@ -51,7 +50,7 @@ print("Election Results")
 print("-------------------------") 
 print(f"Total Votes: {(total_votes)}")   
 print("-------------------------")
-for i in range (len(candidates)):
+for i in range(len(candidates)):
     print(f"{candidates[i]}: {vote_percentage[i]}% ({votes[i]})")
 print("-------------------------")
 print(f"Winner: {elected}")
